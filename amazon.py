@@ -6,10 +6,10 @@ import random
 import re
 import sys
 
-[bread, milk, cereal, juice, vegetables]
+# [bread, milk, cereal, juice, vegetables]
 
-[bread, milk]
-[cereal, anything, vegetables] 
+# [bread, milk]
+# [cereal, anything, vegetables] 
 
 #
 # Complete the 'foo' function below.
@@ -34,19 +34,18 @@ def foo(codeList, shoppingCart):
                 return 1
     return 0
 
-if __name__ == '__main__':
 
-Problem 2
+# Problem 2
 
-query:
-‘mouse’
-Repository
-[‘mouse, mousepad, moron, moral’]
+# query:
+# ‘mouse’
+# Repository
+# [‘mouse, mousepad, moron, moral’]
 
-[‘mouse, mousepad, moron’]
-[‘mouse, mousepad’]
-[‘mouse, mousepad’]
-[‘mouse, mousepad’]
+# [‘mouse, mousepad, moron’]
+# [‘mouse, mousepad’]
+# [‘mouse, mousepad’]
+# [‘mouse, mousepad’]
 
 
 

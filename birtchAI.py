@@ -25,12 +25,12 @@ class Dict:
 
 	def __init__(self):
 		for i in range(0, 100):
-			buckets[i] = []
+			self.buckets[i] = []
 		pass
 
 	def __getitem__(self, key):
 		bucket_number = hash(key) % 100
-		current_bucket = buckets[bucket_number]
+		current_bucket = self.buckets[bucket_number]
 		for node in current_bucket:
 			if key == node.key:
 				return node.value
@@ -39,11 +39,10 @@ class Dict:
 	def __setitem__(self, key, value):
 		bucket_number = hash(key) % 100
 		node = Node(value, key)
-		buckets[bucket_number].append(node)\
-		pass
+		self.buckets[bucket_number].append(node)
 
 	def __len__(self):
-		return len(list_nodes)
+		return len(self.buckets)
 
 """
     Given a list of integers `nums` find the length of the longest subarray whose product
