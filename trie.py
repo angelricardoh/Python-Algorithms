@@ -32,33 +32,33 @@ class Trie:
         # If not present, inserts key into trie
         # If the key is prefix of trie node,
         # just marks leaf node
-        pCrawl = self.root
+        current_node = self.root
         length = len(key)
         for level in range(length):
             index = self._charToIndex(key[level])
  
             # if current character is not present
-            if not pCrawl.children[index]:
-                pCrawl.children[index] = self.getNode()
-            pCrawl = pCrawl.children[index]
+            if not current_node.children[index]:
+                current_node.children[index] = self.getNode()
+            current_node = current_node.children[index]
  
         # mark last node as leaf
-        pCrawl.isEndOfWord = True
+        current_node.isEndOfWord = True
  
     def search(self, key):
          
         # Search key in the trie
         # Returns true if key presents
         # in trie, else false
-        pCrawl = self.root
+        current_node = self.root
         length = len(key)
         for level in range(length):
             index = self._charToIndex(key[level])
-            if not pCrawl.children[index]:
+            if not current_node.children[index]:
                 return False
-            pCrawl = pCrawl.children[index]
+            current_node = current_node.children[index]
  
-        return pCrawl.isEndOfWord
+        return current_node.isEndOfWord
  
 # driver function
 def main():

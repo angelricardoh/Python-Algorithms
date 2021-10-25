@@ -15,7 +15,6 @@ class Graph:
  
     # A function used by DFS
     def DFSUtil(self, v, visited):
- 
         visited.add(v)
         print(v, end=' ')
 
@@ -24,9 +23,7 @@ class Graph:
                 self.DFSUtil(neighbour, visited)
  
     def DFS(self, v):
- 
         visited = set()
- 
         self.DFSUtil(v, visited)
  
 # Driver code

@@ -1,14 +1,27 @@
 import random
 from random import randint
 
+# Problem 1
+
+# Find 3 numbers such thatn a^3 + b^3 + c^3 = 78
+
+# n = 78
+# for i in range(-n, n):
+#     for j in range(i + 1, n):
+#         for k in range(j + 1, n):
+#             if pow(i, 3) + pow(j, 3) + pow(k, 3) == n:
+#                 print(str(i) + ' ' + str(j) + ' ' + str(k))
+
+# Problem 3: Using python, write a program that prints out a maze in ASCII. Use # for walls, . for open space, an S for the start of the maze, and an F for the end of the maze
+#####
+#S.F#
+#####
 
 n = 20
-# maze = [[0] * (n + 1)] * (n + 1)
 maze = []
 for i in range(n + 1):
     maze_row = []
     for j in range(n + 1):
-        # maze[i][j] = '#'
         maze_row.append('#')
     maze.append(maze_row)
 
