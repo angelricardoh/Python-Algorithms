@@ -16,7 +16,7 @@ class LRUCache:
 
     def put(self, key):
         if len(self.cache) == self.capacity:
-            self.cache.pop(self.capacity - 1)
+            self.cache.pop()
         self.cache.insert(0, key)
 
     def display(self):

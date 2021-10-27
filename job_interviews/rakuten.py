@@ -18,12 +18,12 @@ from random import randint
 #####
 
 n = 20
-maze = []
-for i in range(n + 1):
-    maze_row = []
-    for j in range(n + 1):
-        maze_row.append('#')
-    maze.append(maze_row)
+maze = [['#' for _ in range(n + 1)] for _ in range(n + 1)]
+# for i in range(n + 1):
+#     maze_row = []
+#     for j in range(n + 1):
+#         maze_row.append('#')
+#     maze.append(maze_row)
 
 for i in range(0, n):
     for j in range(0, 5):
