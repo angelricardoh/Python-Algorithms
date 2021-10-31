@@ -15,7 +15,6 @@ class Solution:
             i = i + 1
 
         # check for sub-string of length 2.
-        start = 0
         i = 0
         while i < n - 1 :
             if (s[i] == s[i + 1]) :
@@ -33,7 +32,6 @@ class Solution:
                     dp[i][j] = True
 
                     if (len(s[i:j+1]) > maxLength) :
-                        start = i
                         result = s[i:j+1]
                         maxLength = len(result)
         return result

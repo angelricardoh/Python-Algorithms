@@ -16,6 +16,8 @@
 # Input: nums = [5,4,-1,7,8]
 # Output: 23
 
+from typing import List
+
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         
@@ -29,3 +31,7 @@ class Solution:
                 result = dp[i]
                 
         return result
+
+solution = Solution()
+input = [1,2,-4,1,3,-2,3,-1]
+print(solution.maxSubArray(input))

@@ -1,11 +1,5 @@
 #!/bin/python3
 
-import math
-import os
-import random
-import re
-import sys
-
 # [bread, milk, cereal, juice, vegetables]
 
 # [bread, milk]
@@ -46,8 +40,6 @@ def foo(codeList, shoppingCart):
 # [‘mouse, mousepad’]
 # [‘mouse, mousepad’]
 # [‘mouse, mousepad’]
-
-
 
 def searchSuggestions(repository, customerQuery):
     # Write your code here
