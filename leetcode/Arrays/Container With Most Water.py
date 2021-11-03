@@ -30,20 +30,18 @@
 
 class Solution:
     def maxArea(self, height: List[int]) -> int:
-        result = 0        
-        left_pointer = 0
-        right_pointer = len(height) - 1
+        n = len(height)
+        left = 0
+        right = n - 1
+        result = float('-inf')
         
-        while (left_pointer != right_pointer):
-            if height[left_pointer] < height[right_pointer]:
-                area = height[left_pointer] * (right_pointer - left_pointer)
-                left_pointer += 1
+        while left != right:
+            current_container_area = min(height[left], height[right]) * (right - left)
+            if current_container_area > result:
+                result = current_container_area
+            if height[left] < height[right]:
+                left += 1
             else:
-                area = height[right_pointer] * (right_pointer - left_pointer)
-                right_pointer -= 1
-                
-            if area > result:
-                result = area
-        
+                right -= 1
         
         return result

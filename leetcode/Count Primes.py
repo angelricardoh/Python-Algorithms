@@ -1,19 +1,6 @@
-class Solution:
-#     def countPrimes(self, n: int) -> int:
-#         primes = []
-#         count = 0
-#         for i in range(2, n):
-#             print(n % i)
-#             if (n % i) == 0:
-#                 continue
-#             else:
-#                 count += 1
-#                 # if division
-#                 #     break
-#             # primes.append(i)
-            
-#         return count
-    
+import math
+
+class Solution:    
     def countPrimes(self, n: int) -> int:
         primes = []
         
@@ -28,3 +15,40 @@ class Solution:
                     break
 
         return len(primes)
+
+    # def countPrimesSqrt(self, n: int) -> int:
+    #     # primes = {}
+    #     not_primes = {0, 1}
+        
+    #     if n == 0 or n == 1:
+    #         return 0
+        
+    #     for i in range(2, int(math.sqrt(n) + 1)):
+    #         if i not in not_primes:
+    #             for j in range(i + i, n, i):
+    #                 not_primes.add(j)
+                
+    #     return n - len(not_primes)
+
+    # Capital One
+    def countPrimesSqrt(self, n: int) -> int:
+        # primes = {}
+        not_primes = {0, 1}
+        
+        if n < 2:
+            return 0
+        
+        for i in range(2, int(math.sqrt(n) + 1)):
+            if i not in not_primes:
+                for j in range(i + i, n + 1, i):
+                    not_primes.add(j)
+                
+        return n - len(not_primes)
+
+solution = Solution()
+print(solution.countPrimesSqrt(-1))
+print(solution.countPrimesSqrt(0))
+print(solution.countPrimesSqrt(1))
+print(solution.countPrimesSqrt(2))
+print(solution.countPrimesSqrt(7))
+print(solution.countPrimesSqrt(1000))

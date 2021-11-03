@@ -34,33 +34,55 @@
 # 0 <= value <= 105
 # At most 2 * 105 calls will be made to get and put.
 
+# class LRUCache:
+
+#     def __init__(self, capacity: int):
+#         self.hashmap = {}
+#         self.key_list = []
+#         self.capacity = capacity
+        
+#     def get(self, key: int) -> int:
+#         if key in self.hashmap:
+#             self.key_list.remove(key)
+#             self.put_on_top(key, self.hashmap[key])
+#             return self.hashmap[key]
+#         return -1
+    
+#     def put_on_top(self, key, value):
+#         self.key_list.insert(0, key)
+#         self.hashmap[key] = value
+        
+
+#     def put(self, key: int, value: int) -> None:
+#         if key in self.key_list:
+#             self.key_list.remove(key)
+#             self.put_on_top(key, value)
+#             return
+        
+#         if len(self.key_list) == self.capacity:
+#             item_deleted = self.key_list.pop()
+#             self.hashmap.pop(item_deleted)
+            
+#         self.put_on_top(key, value)
+
 class LRUCache:
 
     def __init__(self, capacity: int):
-        self.hashmap = {}
-        self.key_list = []
+        self.ordered_dict = OrderedDict()
         self.capacity = capacity
-        
+
     def get(self, key: int) -> int:
-        if key in self.hashmap:
-            self.key_list.remove(key)
-            self.put_on_top(key, self.hashmap[key])
-            return self.hashmap[key]
-        return -1
-    
-    def put_on_top(self, key, value):
-        self.key_list.insert(0, key)
-        self.hashmap[key] = value
-        
+        if key in self.ordered_dict:
+            self.ordered_dict.move_to_end(key)
+            return self.ordered_dict[key]
+        else:
+            return -1
 
     def put(self, key: int, value: int) -> None:
-        if key in self.key_list:
-            self.key_list.remove(key)
-            self.put_on_top(key, value)
-            return
-        
-        if len(self.key_list) == self.capacity:
-            item_deleted = self.key_list.pop()
-            self.hashmap.pop(item_deleted)
-            
-        self.put_on_top(key, value)
+        if key in self.ordered_dict:
+            self.ordered_dict[key] = value
+            self.ordered_dict.move_to_end(key)
+        else:
+            if len(self.ordered_dict) == self.capacity:
+                self.ordered_dict.popitem(last=False)
+            self.ordered_dict[key] = value
