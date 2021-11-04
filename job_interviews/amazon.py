@@ -49,7 +49,7 @@ def searchSuggestions(repository, customerQuery):
         for word in repository:
             if word[0:i] == customerQuery[0:i]:
                 suggestionList.append(word.lower())
-        sortedList = suggestionList.sort()
+        suggestionList.sort()
         if len(suggestionList) >= 3:
             suggestionList = suggestionList[0:3]
         suggestionListTyped.append(suggestionList)
