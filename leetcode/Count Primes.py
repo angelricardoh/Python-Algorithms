@@ -16,22 +16,7 @@ class Solution:
 
         return len(primes)
 
-    # def countPrimesSqrt(self, n: int) -> int:
-    #     # primes = {}
-    #     not_primes = {0, 1}
-        
-    #     if n == 0 or n == 1:
-    #         return 0
-        
-    #     for i in range(2, int(math.sqrt(n) + 1)):
-    #         if i not in not_primes:
-    #             for j in range(i + i, n, i):
-    #                 not_primes.add(j)
-                
-    #     return n - len(not_primes)
-
-    # Capital One
-    def countPrimesSqrt(self, n: int) -> int:
+    def countPrimesSqrtTime(self, n: int) -> int:
         # primes = {}
         not_primes = {0, 1}
         
