@@ -27,3 +27,28 @@
 
 # 1 <= s.length, t.length <= 200
 # s and t only contain lowercase letters and '#' characters.
+
+class Solution:
+    def backspaceCompare(self, s: str, t: str) -> bool:
+        def trimString(s):
+            i = 0
+            while True:
+                if i >= len(s):
+                    break
+                aux = s[i]
+                if aux == '#' and i == 0:
+                    s = s[i + 1:]
+                    i = 0
+                elif aux == '#':
+                    s = s[:i - 1] + s[i + 1:]
+                    i -= 1
+                else:
+                    i += 1
+            return s
+                    
+        s = trimString(s)
+        t = trimString(t)
+                
+        if s == t:
+            return True
+        return False
