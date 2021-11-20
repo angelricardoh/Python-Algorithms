@@ -29,39 +29,29 @@
 
 class Solution:
     def numberOfPatterns(self, m: int, n: int) -> int:
-        board = [[1,2,3],[4,5,6],[7,8,9]]
-        result = []
-        def backtrack(current_path, i, j, m, n):
-            if n == 0:
-                return
-            
-            if i < 0 or i > 2:
-                return
-            if j < 0 or j > 2:
-                return
-            
-            current_number = board[i][j]
-            current_path_copy = current_path.copy()
-            if current_number not in current_path_copy:
-                current_path_copy.append(current_number)
+        self.valid_patterns = 0
+
+        def backtrack(num, count, m, n, visited):
+            if m <= count <= n:
+                self.valid_patterns += 1
                 
-                if current_path_copy not in result:
-                    if len(current_path_copy) >= m:
-                        result.append(current_path_copy)
-            else:
-                n += 1
-            
-            backtrack(current_path_copy, i - 1, j - 1, m, n - 1)
-            backtrack(current_path_copy, i - 1, j, m, n - 1)
-            backtrack(current_path_copy, i - 1, j + 1, m, n - 1)
-            backtrack(current_path_copy, i, j - 1, m, n - 1)
-            backtrack(current_path_copy, i, j + 1, m, n - 1)
-            backtrack(current_path_copy, i + 1, j - 1, m, n - 1)
-            backtrack(current_path_copy, i + 1, j, m, n - 1)
-            backtrack(current_path_copy, i + 1, j + 1, m, n - 1)
-            
-        for i in range(3):
-            for j in range(3):
-                backtrack([], i, j, m, n)
-        return len(result)
-            
+            if count == n:
+                return
+                
+            visited.add(num)
+                
+            for nextnum in range(1, 10):
+                if nextnum not in visited and (num, nextnum) in obstacles:
+                    obstacle = obstacles[(num, nextnum)]
+                    if obstacle not in visited:
+                        continue
+
+                    backtrack(nextnum, count + 1, m, n, visited)
+                    
+            visited.remove(num)
+                    
+        obstacles = {(1,3):2, (1,7):4, (1,9):5, (2,8):5, (3,7):5, (3,1):2, (3,9):6, (4,6):5, (6,4):5, (7,1):4, (7,3):5, (7,9):8, (8,2):5, (9,7):8, (9,3):6, (9,1):5}
+        for i in range(1, 10):
+            backtrack(i, 1, m, n, set())
+        return self.valid_patterns
+        
