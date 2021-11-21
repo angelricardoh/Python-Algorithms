@@ -7,9 +7,7 @@ class Solution:
         for char in number_string:
             number_array.append(char)
         
-        current_index = 0
         if number_array[0] == '-':
-            current_index = 1
             number_array.pop(0)
             result = '-'
             
@@ -28,3 +26,6 @@ class Solution:
             return 0
         
         return result
+
+solution = Solution()
+print(solution.reverse(-1000))
