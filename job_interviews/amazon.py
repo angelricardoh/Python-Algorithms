@@ -54,3 +54,16 @@ def searchSuggestions(repository, customerQuery):
             suggestionList = suggestionList[0:3]
         suggestionListTyped.append(suggestionList)
     return suggestionListTyped
+
+
+def findDiff(input, k):
+    input_dict = {}
+    for item in input:
+        input_dict[item] = None
+
+    for item in input:
+        if item + k in input_dict:
+            return (item + k, item)
+    return False
+
+print(findDiff([5, 6, 2, 4, 8], 3))

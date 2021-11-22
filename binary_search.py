@@ -1,16 +1,16 @@
-def binarySearch(number_list, key, low, high):
+def binarySearch(arr, key, low, high):
     if low > high:
         return -1
 
     middle = int(high - low / 2)
 
-    if number_list[middle] == key:
+    if arr[middle] == key:
         return middle
     
-    if number_list[middle] > key:
-        return binarySearch(number_list, key, low, middle - 1)
+    if arr[middle] > key:
+        return binarySearch(arr, key, low, middle - 1)
     else:
-        return binarySearch(number_list, key, middle + 1, high)
+        return binarySearch(arr, key, middle + 1, high)
 
 number_list = [1, 2, 5, 6, 7, 8, 10]
 

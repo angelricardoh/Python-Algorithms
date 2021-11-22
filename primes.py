@@ -34,7 +34,7 @@ class Solution:
         # primes = {}
         not_primes = {0, 1}
         all = set()
-        for i in range(int(math.sqrt(n) + 1) + 1):
+        for i in range(n + 1):
             all.add(i)
 
         if n < 2:
@@ -53,5 +53,5 @@ solution = Solution()
 # print(solution.countPrimesSqrt(1))
 # print(solution.countPrimesSqrt(2))
 # print(solution.countPrimesSqrt(7))
-print(solution.countPrimesSqrtTime(1000))
-# print(solution.getPrimeSqrtTime(1000))
+# print(solution.countPrimesSqrtTime(1000))
+print(solution.getPrimeSqrtTime(1000))
