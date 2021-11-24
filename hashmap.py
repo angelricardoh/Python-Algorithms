@@ -7,15 +7,12 @@ class Node:
 		self.key = key
 
 class HashMap:
-	buckets = [None] * 100
-
-	def __init__(self):
-		for i in range(0, 100):
-			self.buckets[i] = []
-		pass
+	def __init__(self, capacity):
+		self.capacity = capacity
+		self.buckets = [[]] * capacity
 
 	def __getitem__(self, key):
-		bucket_number = hash(key) % 100
+		bucket_number = hash(key) % self.capacity
 		current_bucket = self.buckets[bucket_number]
 		for node in current_bucket:
 			if key == node.key:
@@ -23,7 +20,7 @@ class HashMap:
 		return None
 
 	def __setitem__(self, key, value):
-		bucket_number = hash(key) % 100
+		bucket_number = hash(key) % self.capacity
 		node = Node(value, key)
 		self.buckets[bucket_number].append(node)
 
@@ -31,6 +28,6 @@ class HashMap:
 		return len(self.buckets)
 
 if __name__ == '__main__':
-    map = HashMap()
+    map = HashMap(capacity=100)
     map['hello'] = 'world'
     print(map['hello'])
